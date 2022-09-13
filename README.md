@@ -18,8 +18,13 @@ Since the optimization of preprocessing is not ready yet, we don't include image
 
 ```C
 $ sudo apt-get install python3-pip libhdf5-serial-dev hdf5-tools
-$ pip3 install --extra-index-url https://developer.download.nvidia.com/compute/redist/jp/v42 tensorflow-gpu==1.13.1+nv19.5 --user
-$ pip3 install numpy pycuda --user
+$ pip3 install -r requirements.txt
+$ pip3 install nvidia-pyindex
+$ CPPFLAGS=-I/usr/local/cuda/targets/x86_64-linux/include/ LDFLAGS=-L/usr/local/cuda/targets/x86_64-linux/lib/ pip3 install pycuda==2022.1
+$ pip3 install /usr/local/TensorRT-*/python/tensorrt-*-cp36-none-linux_x86_64.whl
+$ pip3 install uff==0.6.9
+$ pip3 install graphsurgeon==0.4.5
+$ patch -p0 < graphsurgeon045.patch
 ```
 
 </br>
@@ -27,7 +32,7 @@ $ pip3 install numpy pycuda --user
 
 ## Download model
 
-Please download the object detection model from <a href=https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/detection_model_zoo.md>TensorFlow model zoo</a>.
+Please download the object detection model from <a href=http://download.tensorflow.org/models/object_detection/ssd_mobilenet_v2_coco_2018_03_29.tar.gz>TensorFlow model zoo</a>.
 </br>
 
 ```C
